@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Chayvw/losingRecipes/issues"
   },
-  "homepage": "https://github.com/Chayvw/losingRecipes#readme"
+  "homepage": "https://github.com/Chayvw/losingRecipes#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.14"
+  }
 }
