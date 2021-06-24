@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class NewIngredient extends Component {
-    render() {
-        return (
-            <div>
-               <h1>New Ingredients</h1>  
-            </div>
-        );
-    }
+function NewIngredient(props) {
+    return (
+        <div className="container">
+           <h2>New Ingredient</h2> 
+        </div>
+    );
 }
 
 export default NewIngredient;
