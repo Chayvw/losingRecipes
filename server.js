@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 
+const IngredientsController = require("./controllers/ingredientsController");
+
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -11,13 +13,19 @@ app.use(express.json());
 
 app.use(express.static("client/build"));
 
-app.get("*", (req, res) =>{
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-} )
 
 app.get("/api/config", (req, res) =>{
     res.json({success:true})
 });
+
+// app.get("*", (req, res) =>{
+//     res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// } )
+
+
+// app.use to serve up my controller
+app.use(IngredientsController);
+
 
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/losingrecipes", { useNewUrlParser: true , useUnifiedTopology: true }).then(()=>{console.log("Connected Successfully")}).catch((err)=>{console.log("Unable to connect")})
