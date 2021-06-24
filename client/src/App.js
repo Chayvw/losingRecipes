@@ -9,13 +9,13 @@ import Search from './componets/Search';
 
 function App() {
   // axios call to check if my front end is connected to my backend
-  useEffect(() => {
-    axios.get("/api/config").then((response) => {
-      console.log(response.data)
-    }).catch((err) => {
-      console.log(err)
-    })
-  }, [])
+  // useEffect(() => {
+  //   axios.get("/api/config").then((response) => {
+  //     console.log(response.data)
+  //   }).catch((err) => {
+  //     console.log(err)
+  //   })
+  // }, [])
   return (
     <div className="App">
       <Router>
