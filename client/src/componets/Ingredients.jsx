@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 class Ingredients extends Component {
     // adding state for my ingredients and setting it to an empty array
@@ -23,6 +24,9 @@ class Ingredients extends Component {
             <div>
                 <h3>Ingredients</h3>
                 <div>
+                    <div>
+                     <Link to='/newingredient'> <button>Click to add new Ingredient</button></Link>  
+                    </div>
                     {this.state.ingredients.map((ingredient) => {
                         return (
                             <div key={ingredient._id}>
