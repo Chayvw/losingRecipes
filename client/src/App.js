@@ -6,6 +6,7 @@ import Home from './componets/Home';
 import NoMatch from './componets/NoMatch';
 import Ingredients from './componets/Ingredients';
 import Search from './componets/Search';
+import NewIngredient from './container/NewIngredient';
 
 function App() {
   // axios call to check if my front end is connected to my backend
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/ingredients' component={Ingredients} />
+          <Route path='newingredient' component={NewIngredient} />
           <Route path='/search' component={Search} />
           <Route path='/nomatch' component={NoMatch} />
         </Switch>
