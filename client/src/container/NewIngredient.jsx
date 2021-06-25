@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 
 function NewIngredient(props) {
     // define state thats going to hold the input value 
@@ -14,17 +16,23 @@ function NewIngredient(props) {
 
     const handleCheckBoxChange = () =>{
         setChecked(true);
+        }
 
+        const handleSubmit = (event)=>{
+            event.preventDefault()
+            // top three most difficult things to figure out
+            axios.post("/api/ingredients", {name:ingredient, isVegetarian:checked}).then((response)=>{
+                console.log(response.data);
+            }).catch((err)=>{
+                console.log(err)
+            });
 
     }
-
-    
-
     
     return (
         <div className="container">
             <div class="row">
-                <form className="col s12">
+                <form className="col s12" onSubmit={handleSubmit} >
                     <div className="row">
                         <div className="input-field col s8">
                             <input id="name" type="text" value={ingredient} onChange={handleInputChange} />
