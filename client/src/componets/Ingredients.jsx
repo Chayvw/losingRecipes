@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+// import { response } from 'express';
 
 class Ingredients extends Component {
     // adding state for my ingredients and setting it to an empty array
     state = {
         ingredients: [],
+        deleteIngredient:false
 
     }
     // componentDidMount because this is a functional component
@@ -17,6 +19,19 @@ class Ingredients extends Component {
                     ingredients: response.data.data
                 });
             }).catch((err) => { console.log(err) });
+    };
+
+    handleDelete(id){
+        console.log("handled")
+        axios.delete(`/api/ingredients/:${id}`)
+        .then((response)=>{
+            console.log(response.data);
+            this.setState({
+                deleteIngredient:true
+            })
+
+        }).catch((err) => { console.log(err) });
+   
     }
 
 
@@ -36,8 +51,10 @@ class Ingredients extends Component {
                                             <div className="row">
                                                 <div className="col s8">
                                                     <h4>{ingredient.name}</h4>
-                                                    
-
+                                                    <label>
+                                                        <input type="checkbox" />
+                                                        <span>Delete</span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -46,7 +63,16 @@ class Ingredients extends Component {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col s6">
-                                            <Link to='/newingredient'> <button className="waves-effect waves-light btn-small">Click to add new Ingredient</button></Link>
+                                            <Link to='/newingredient'> <button className="waves-effect waves-light btn-small"> Add Ingredient</button></Link>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col s6">
+                                             <button className="waves-effect waves-light btn-small" onClick={this.handleDelete}> Delete Ingredient</button>
+                                            
                                         </div>
                                     </div>
                                 </div>
