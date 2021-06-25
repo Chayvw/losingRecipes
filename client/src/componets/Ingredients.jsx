@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 class Ingredients extends Component {
     // adding state for my ingredients and setting it to an empty array
     state = {
-        ingredients: []
+        ingredients: [],
+
     }
     // componentDidMount because this is a functional component
     componentDidMount() {
@@ -34,11 +35,9 @@ class Ingredients extends Component {
                                         <div key={ingredient._id} className="container">
                                             <div className="row">
                                                 <div className="col s8">
+                                                    <h4>{ingredient.name}</h4>
+                                                    
 
-                                                    <ul key={ingredient._id} className="collection-header">
-                                                        {/* <li className="collection-header"><h4>Current Ingredients</h4></li> */}
-                                                        <li class="collection-item">{ingredient.name}</li>
-                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
