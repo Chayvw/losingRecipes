@@ -45,6 +45,20 @@ router.post("/api/ingredients", (req, res) =>{
         })
 
     })
-})
+});
+
+//UPDATE
+
+// DELETE
+router.delete("/api/ingredients/:id", (req, res) => {
+    console.log(req.params._id);
+    db.Post.destroy({
+      where: {
+        id: req.params._id,
+      },
+    }).then(function (post) {
+      res.json(post);
+    });
+  });
 
 module.exports = router;
