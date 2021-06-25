@@ -23,9 +23,12 @@ function NewIngredient(props) {
             // top three most difficult things to figure out
             axios.post("/api/ingredients", {name:ingredient, isVegetarian:checked}).then((response)=>{
                 console.log(response.data);
+                props.history.push("/ingredients")
             }).catch((err)=>{
                 console.log(err)
             });
+
+            // components get passed props from react router and they we can find history 
 
     }
     
