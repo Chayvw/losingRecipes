@@ -50,24 +50,24 @@ router.post("/api/ingredients", (req, res) =>{
 //UPDATE
 
 // DELETE
-// router.delete("/api/ingredients/:id", (req, res) => {
-//     console.log(req.params.id);
-//     db.Ingredient.findByIdAndDelete({_id :req.params.id})
-//     .then((result)=>{
-//         res.json({
-//             error:false,
-//             data:result,
-//             message:"Successfully deleted an ingredient",
-//         });
-//     }).catch((err) =>{
-//         // if it is an error than .catch will give you a 500 status error 
-//         res.status(500).json({
-//             error:true,
-//             data:null,
-//             message:"Unable to retrieve all ingredients"
-//         })
+router.delete("/api/ingredients/:id", (req, res) => {
+    // console.log(req.params.id);
+    db.Ingredient.findByIdAndDelete(req.params.id)
+    .then((result)=>{
+        res.json({
+            error:false,
+            data:result,
+            message:"Successfully deleted an ingredient",
+        });
+    }).catch((err) =>{
+        // if it is an error than .catch will give you a 500 status error 
+        res.status(500).json({
+            error:true,
+            data:null,
+            message:"Unable to retrieve all ingredients"
+        })
 
-//     })
-//   });
+    })
+  });
 
 module.exports = router;

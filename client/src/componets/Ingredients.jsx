@@ -1,39 +1,41 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 // import { response } from 'express';
 
 class Ingredients extends Component {
     // adding state for my ingredients and setting it to an empty array
     state = {
         ingredients: [],
-        deleteIngredient:false
+        // deleteIngredient:false
 
     }
     // componentDidMount because this is a functional component
     componentDidMount() {
-        axios.get("api/ingredients")
-            .then((response) => {
-                console.log(response.data)
-                this.setState({
-                    ingredients: response.data.data
-                });
-            }).catch((err) => { console.log(err) });
+        this.getIngredients()
+
     };
 
-    handleDelete(id){
-        console.log("handled")
-        axios.delete(`/api/ingredients/:${id}`)
-        .then((response)=>{
-            console.log(response.data);
-            this.setState({
-                deleteIngredient:true
-            })
 
+    getIngredients = () => {
+        axios.get("api/ingredients")
+        .then((response) => {
+            console.log(response.data)
+            this.setState({
+                ingredients: response.data.data
+            });
         }).catch((err) => { console.log(err) });
-   
     }
 
+    handleDelete(id) {
+        console.log("handled")
+        axios.delete(`/api/ingredients/:${id}`)
+            .then((response) => {
+                console.log(response.data);
+                this.getIngredients();
+            }).catch((err) => { console.log(err) });
+
+    }
 
     render() {
         return (
@@ -51,10 +53,8 @@ class Ingredients extends Component {
                                             <div className="row">
                                                 <div className="col s8">
                                                     <h4>{ingredient.name}</h4>
-                                                    <label>
-                                                        <input type="checkbox" />
-                                                        <span>Delete</span>
-                                                    </label>
+                        
+                                                    <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleDelete(ingredient._id)}}> Delete Ingredient</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -64,18 +64,18 @@ class Ingredients extends Component {
                                     <div className="row">
                                         <div className="col s6">
                                             <Link to='/newingredient'> <button className="waves-effect waves-light btn-small"> Add Ingredient</button></Link>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
-                                <div className="container">
+                                {/* <div className="container">
                                     <div className="row">
                                         <div className="col s6">
-                                             <button className="waves-effect waves-light btn-small" onClick={this.handleDelete}> Delete Ingredient</button>
-                                            
+                                            <button className="waves-effect waves-light btn-small" onClick={this.handleDelete}> Delete Ingredient</button>
+
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
 
                             </div>
                             <div>
