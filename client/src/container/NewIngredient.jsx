@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 function NewIngredient(props) {
@@ -54,6 +55,7 @@ function NewIngredient(props) {
                         <button className="btn waves-effect waves-light" type="submit" name="action">Add
     <i className="material-icons right">Ingredient</i>
                         </button>
+                        <Link to='/'> <button className="waves-effect waves-light btn-large">Home</button></Link>
                     </div>
                 </div>
             </div>

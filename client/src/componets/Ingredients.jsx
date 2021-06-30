@@ -19,18 +19,20 @@ class Ingredients extends Component {
 
     getIngredients = () => {
         axios.get("api/ingredients")
-        .then((response) => {
-            console.log(response.data)
-            this.setState({
-                ingredients: response.data.data
-            });
-        }).catch((err) => { console.log(err) });
+            .then((response) => {
+                console.log(response.data)
+                this.setState({
+                    ingredients: response.data.data
+                });
+            }).catch((err) => { console.log(err) });
     }
 
-    handleDelete(id) {
+    handleDelete = (id) => {
         console.log("handled")
-        axios.delete(`/api/ingredients/:${id}`)
+        // took 7 hours to realize i should remove the semi colon in my route 
+        axios.delete(`/api/ingredients/${id}`)
             .then((response) => {
+                console.log("Call was made")
                 console.log(response.data);
                 this.getIngredients();
             }).catch((err) => { console.log(err) });
@@ -53,30 +55,30 @@ class Ingredients extends Component {
                                             <div className="row">
                                                 <div className="col s8">
                                                     <h4>{ingredient.name}</h4>
-                        
-                                                    <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleDelete(ingredient._id)}}> Delete Ingredient</button>
+                                                    <button className="waves-effect waves-light btn-small" onClick={() => { this.handleDelete(ingredient._id) }}> Delete</button>
                                                 </div>
                                             </div>
                                         </div>
+
                                     )
                                 })}
                                 <div className="container">
                                     <div className="row">
                                         <div className="col s6">
-                                            <Link to='/newingredient'> <button className="waves-effect waves-light btn-small"> Add Ingredient</button></Link>
+                                            <Link to='/newingredient'> <button className="waves-effect waves-light btn-large"> Add Ingredient</button></Link>
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col s6">
+                                            <Link to='/search'> <button className="waves-effect waves-light btn-large"> Find Recipes </button></Link>
+
 
                                         </div>
                                     </div>
                                 </div>
-                                {/* <div className="container">
-                                    <div className="row">
-                                        <div className="col s6">
-                                            <button className="waves-effect waves-light btn-small" onClick={this.handleDelete}> Delete Ingredient</button>
-
-                                        </div>
-                                    </div>
-                                </div> */}
-
                             </div>
                             <div>
                                 {/* if the length is 0 it will return no ingredients at this time */}
