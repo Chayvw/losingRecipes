@@ -51,6 +51,14 @@ class Search extends Component {
                         <button onClick={this.handleUserInput}>Search</button>
                     </div>
                 </div>
+                {/* {this.state.results && this.state.results.map((result)=>{
+                    return(
+                        <div>
+                            <h1>{result.source}</h1>
+                        </div>
+                    )
+
+                })} */}
                 <div className="row">
                     <div className="col s12 m6">
                         <div class="card blue-grey darken-1">
@@ -60,6 +68,8 @@ class Search extends Component {
                                 {/* <h5>{this.state.results.label}</h5> */}
 
                                 <p>{this.state.results.source}</p>
+                                <img src={this.state.results.image} />
+
 
                             </div>
                             <div class="card-action">
