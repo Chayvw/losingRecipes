@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { ExternalLink } from 'react-external-link';
 // import { response } from 'express';
 
 class Search extends Component {
@@ -57,16 +58,17 @@ class Search extends Component {
                                 <span class="card-title">{this.state.results.label}</span>
 
                                 {/* <h5>{this.state.results.label}</h5> */}
-          
-                            <p>{this.state.results.source}</p>
-                        
+
+                                <p>{this.state.results.source}</p>
+
                             </div>
                             <div class="card-action">
-                                <a href="#">This is a link</a>
-                                <a href="#">This is a link</a>
+                                <ExternalLink href={this.state.results.url}>
+                                    <span>Click to get Recipe</span>
+                                </ExternalLink>
                             </div>
                         </div>
-                       
+
                         {/* {this.state.results.map((result)=>{
                             <div>
                                 result
